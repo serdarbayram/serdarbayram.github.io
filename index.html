@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serdar Bayram - 3D Artist ve Oyun Geliştirici</title>
+    <title>Serdar Bayram - 3D Artist and AloneGames Game Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #000000;
             color: #fff;
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
         .profile-img {
             width: 150px;
@@ -40,6 +43,9 @@
         }
         .section {
             margin: 40px 0;
+            background-color: rgba(50, 50, 50, 0.5);
+            padding: 20px;
+            border-radius: 10px;
         }
         .section-title {
             font-size: 24px;
@@ -53,11 +59,15 @@
             justify-content: center;
         }
         .gallery img {
-            width: calc(30% - 10px); /* Resimlerin genişliğini ayarlayın */
-            height: auto; /* Yükseklik otomatik olsun */
+            width: calc(30% - 10px);
+            height: auto;
             object-fit: cover;
-            margin: 5px; /* Resimler arası boşluk */
+            margin: 5px;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
         }
         .video-container {
             display: flex;
@@ -69,7 +79,6 @@
             flex: 1 1 calc(50% - 10px);
             height: 315px;
         }
-        /* Lightbox CSS */
         .lightbox {
             display: none;
             position: fixed;
@@ -106,6 +115,25 @@
             text-decoration: none;
             cursor: pointer;
         }
+        @keyframes zoomIn {
+            from {transform: scale(0.5); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        @keyframes zoomOut {
+            from {transform: scale(1); opacity: 1;}
+            to {transform: scale(0.5); opacity: 0;}
+        }
+        .shape {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.2;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,8 +156,21 @@
         </div>
 
         <div class="section">
-            <h3 class="section-title">Çalışmalarım</h3>
+		 <h3 class="section-title">Ticari Çalışmalarım</h3>
             <div class="gallery">
+                <img src="https://i.hizliresim.com/fl2u3w7.png" alt="Donut">
+                
+            </div>
+			 <h3 class="section-title">Ticari VFX Çalışmalarım</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/ye8rmEbcHO4?si=YkxB-qy60XinKYuR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/pfJXhRauEKk?si=iTdb7z4YsQ5ni7tT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+             
+            </div>
+            <h3 class="section-title">Kişisel Çalışmalarım</h3>
+            <div class="gallery">
+                <img src="https://i.hizliresim.com/b751qdn.jpg" alt="Bina">
+                <img src="https://i.hizliresim.com/fl2u3w7.png" alt="Donut">
                 <img src="https://i.hizliresim.com/fexcx1c.jpg" alt="Donut">
                 <img src="https://i.hizliresim.com/7ycqlbt.jpg" alt="Dinazor">
                 <img src="https://i.hizliresim.com/rae23t0.jpg" alt="Kayıp Dünya">
@@ -142,20 +183,19 @@
                 <img src="https://i.hizliresim.com/en8czhd.png" alt="Mantar">
                 <img src="https://i.hizliresim.com/qv0w9c6.png" alt="İç mekan">
                 <img src="https://i.hizliresim.com/k747u4a.jpg" alt="Balta">
-                <!-- Daha fazla proje ekleyebilirsiniz -->
             </div>
         </div>
 		
         <div class="section">
             <h3 class="section-title">YouTube Videolarım</h3>
             <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/3hZ2w-hXKu4?si=VfkUF8G68XPNHWr-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/OqU9sbL8og8?si=RKH3raKgd-t8mIfS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/z883W1hrOzc?si=OYy1Fjlnowv80ZIN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/EX6onNmiM_Y?si=5atdnxkxWmJ3APvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/7m1IhDTnb74?si=5r1bfhfPvS8-aZqO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/3F8ME0BbjoE?si=RuCk076WXf-_oi-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/7qCTz6oI-ow?si=J9uSfIvWkdTnJ2vL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <!-- Daha fazla video ekleyebilirsiniz -->
             </div>
         </div>
 
@@ -167,7 +207,6 @@
         </div>
     </div>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="close">×</span>
         <div class="lightbox-content">
@@ -176,28 +215,75 @@
     </div>
 
     <script>
-        // Lightbox script
         const galleryImages = document.querySelectorAll('.gallery img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const close = document.querySelector('.close');
 
+        function openLightbox(src) {
+            lightbox.style.display = 'block';
+            lightboxImg.src = src;
+            lightboxImg.style.animation = 'zoomIn 0.3s ease';
+        }
+
+        function closeLightbox() {
+            lightboxImg.style.animation = 'zoomOut 0.3s ease';
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                lightboxImg.style.animation = '';
+            }, 300);
+        }
+
         galleryImages.forEach(image => {
-            image.addEventListener('click', () => {
-                lightbox.style.display = 'block';
-                lightboxImg.src = image.src;
-            });
+            image.addEventListener('click', () => openLightbox(image.src));
         });
 
-        close.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
+        close.addEventListener('click', closeLightbox);
 
         lightbox.addEventListener('click', (e) => {
             if (e.target !== lightboxImg) {
-                lightbox.style.display = 'none';
+                closeLightbox();
             }
         });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                closeLightbox();
+            }
+        });
+
+        // Geometrik şekiller için animasyon
+        function createShape() {
+            const shape = document.createElement('div');
+            shape.classList.add('shape');
+            
+            const size = Math.random() * 50 + 10;
+            shape.style.width = `${size}px`;
+            shape.style.height = `${size}px`;
+            
+            const type = Math.floor(Math.random() * 3);
+            if (type === 0) {
+                shape.style.borderRadius = '50%';
+            } else if (type === 1) {
+                shape.style.transform = 'rotate(45deg)';
+            }
+            
+            const grayValue = Math.floor(Math.random() * 100) + 100; // 100-200 arası gri tonları
+            shape.style.backgroundColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`;
+            
+            shape.style.left = `${Math.random() * 100}vw`;
+            shape.style.top = '-50px';
+            
+            shape.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            
+            document.body.appendChild(shape);
+            
+            setTimeout(() => {
+                document.body.removeChild(shape);
+            }, 15000);
+        }
+
+        setInterval(createShape, 500);
     </script>
 </body>
 </html>
